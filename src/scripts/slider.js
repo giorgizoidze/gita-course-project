@@ -11,10 +11,10 @@ let currentSlide = 0;
 
 export function initializeSlider() {
   slideImage.forEach((image, index) => {
-    image.style.left = index * 100 + '%';
-  })
+    image.style.left = index * 100 + "%";
+  });
 
-  slideImage[0].classList.add('active');
+  slideImage[0].classList.add("active");
 
   createNavigationDots();
 }
@@ -27,14 +27,15 @@ function createNavigationDots() {
 
     dot.addEventListener("click", () => {
       goToSlide(i);
-    })
+    });
   }
 
   navigationDots.children[0].classList.add("active");
 }
 
 function goToSlide(slideNumber) {
-  slidesContainer.style.transform = "translateX(-" + slideWidth * slideNumber + "px)";
+  slidesContainer.style.transform =
+    "translateX(-" + slideWidth * slideNumber + "px)";
 
   currentSlide = slideNumber;
 
@@ -42,22 +43,20 @@ function goToSlide(slideNumber) {
 }
 
 function setActiveClass() {
-  let currentActive = document.querySelector('.slide-image.active');
+  let currentActive = document.querySelector(".slide-image.active");
   currentActive.classList.remove("active");
   slideImage[currentSlide].classList.add("active");
 
-  let currentDot = document.querySelector('.single-dot.active');
+  let currentDot = document.querySelector(".single-dot.active");
   currentDot.classList.remove("active");
   navigationDots.children[currentSlide].classList.add("active");
 }
-
-
 
 function onArrowButtonClick(buttonType) {
   if (buttonType === "next") {
     if (currentSlide >= numberofImages - 1) {
       goToSlide(0);
-      return
+      return;
     }
     currentSlide++;
   }
@@ -65,7 +64,7 @@ function onArrowButtonClick(buttonType) {
   if (buttonType === "prev") {
     if (currentSlide <= 0) {
       goToSlide(numberofImages - 1);
-      return
+      return;
     }
     currentSlide--;
   }
